@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Uma homenagem delicada, feita de carinho, admiração e memórias." />
+  <title>Para Alguém Especial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f8f4ed;
+      --paper-soft: #fffaf2;
+      --ink: #352f2b;
+      --muted: #766f67;
+      --line: rgba(82, 70, 61, 0.16);
+      --rose: #ad7e78;
+      --clay: #9a735f;
+      --sage: #8e9481;
+      --shadow: 0 24px 70px rgba(65, 52, 43, 0.08);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Inter", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(173, 126, 120, 0.12), transparent 34rem),
+        linear-gradient(120deg, rgba(255, 250, 242, 0.95), rgba(246, 239, 228, 0.88)),
+        var(--paper);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.38;
+      background-image:
+        linear-gradient(rgba(53, 47, 43, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(53, 47, 43, 0.025) 1px, transparent 1px);
+      background-size: 3.75rem 3.75rem;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), transparent 72%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .section {
+      width: 100%;
+      padding: clamp(5rem, 9vw, 10rem) clamp(1.25rem, 5vw, 5rem);
+    }
+
+    .inner {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 1.2rem;
+      color: var(--rose);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: 0;
+      line-height: 0.98;
+    }
+
+    h1 {
+      width: min(980px, 100%);
+      font-size: clamp(4rem, 10vw, 10.5rem);
+    }
+
+    h2 {
+      max-width: 760px;
+      font-size: clamp(3rem, 6vw, 6.25rem);
+    }
+
+    h3 {
+      font-size: clamp(1.8rem, 2.5vw, 2.7rem);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding-top: 4rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero__content {
+      width: min(1120px, 100%);
+      text-align: center;
+    }
+
+    .hero__copy {
+      width: min(620px, 100%);
+      margin: clamp(1.25rem, 2.5vw, 2rem) auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      transition: opacity 520ms ease, transform 520ms ease;
+    }
+
+    .hero__copy.is-changing {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .scroll-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-height: 2.9rem;
+      margin-top: clamp(2.5rem, 6vw, 5rem);
+      padding: 0.8rem 1.1rem 0.8rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 242, 0.45);
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 12px 38px rgba(65, 52, 43, 0.05);
+      transition: transform 240ms ease, border-color 240ms ease, background 240ms ease;
+    }
+
+    .scroll-link:hover,
+    .scroll-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(173, 126, 120, 0.42);
+      background: rgba(255, 250, 242, 0.78);
+      outline: none;
+    }
+
+    .scroll-link span {
+      display: grid;
+      place-items: center;
+      width: 1.65rem;
+      height: 1.65rem;
+      border-radius: 50%;
+      background: rgba(173, 126, 120, 0.13);
+      color: var(--rose);
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .manifesto {
+      background: rgba(255, 250, 242, 0.42);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .manifesto__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr);
+      gap: clamp(2rem, 7vw, 7rem);
+      align-items: start;
+    }
+
+    .manifesto__text {
+      max-width: 760px;
+      color: #4a423c;
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 2.3vw, 2.35rem);
+      font-weight: 500;
+      line-height: 1.36;
+    }
+
+    .manifesto__text p + p {
+      margin-top: 1.35rem;
+    }
+
+    .manifesto__text p:first-child::first-letter {
+      float: left;
+      padding: 0.1rem 0.55rem 0 0;
+      color: var(--clay);
+      font-size: 5.25em;
+      line-height: 0.76;
+    }
+
+    .note {
+      position: sticky;
+      top: 2rem;
+      padding: 1.25rem 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .moments__intro {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .moments__intro p {
+      width: min(430px, 100%);
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .moment {
+      grid-column: span 4;
+      min-width: 0;
+    }
+
+    .moment:nth-child(2),
+    .moment:nth-child(5) {
+      margin-top: clamp(2rem, 5vw, 4rem);
+    }
+
+    .moment:nth-child(3) {
+      margin-top: clamp(0.75rem, 3vw, 2rem);
+    }
+
+    .photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 0.45rem;
+      background:
+        linear-gradient(145deg, rgba(255, 250, 242, 0.68), rgba(232, 217, 205, 0.24)),
+        var(--tone);
+      box-shadow: var(--shadow);
+      transition: transform 420ms ease, box-shadow 420ms ease;
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--focus, center);
+      filter: saturate(0.92) contrast(0.96);
+      transition: transform 700ms ease, filter 700ms ease;
+    }
+
+    .photo::before {
+      content: "";
+      position: absolute;
+      inset: 0.9rem;
+      border: 1px solid rgba(255, 250, 242, 0.58);
+      border-radius: 0.28rem;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(53, 47, 43, 0.16), transparent 46%);
+      pointer-events: none;
+    }
+
+    .moment:hover .photo {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 80px rgba(65, 52, 43, 0.13);
+    }
+
+    .moment:hover .photo img {
+      transform: scale(1.035);
+      filter: saturate(1) contrast(1);
+    }
+
+    .moment figcaption {
+      margin-top: 0.9rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .closing {
+      padding-bottom: clamp(8rem, 12vw, 12rem);
+    }
+
+    .closing .inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    .closing p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.18rem);
+    }
+
+    .audio-dock {
+      position: fixed;
+      right: clamp(1rem, 3vw, 2rem);
+      bottom: clamp(1rem, 3vw, 2rem);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: min(340px, calc(100vw - 2rem));
+      padding: 0.7rem 0.85rem;
+      border: 1px solid rgba(82, 70, 61, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 250, 242, 0.78);
+      box-shadow: 0 18px 55px rgba(65, 52, 43, 0.12);
+      backdrop-filter: blur(18px);
+    }
+
+    .audio-button {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 2.45rem;
+      height: 2.45rem;
+      border: 0;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper-soft);
+      cursor: pointer;
+      transition: transform 200ms ease, background 200ms ease;
+    }
+
+    .audio-button:hover,
+    .audio-button:focus-visible {
+      transform: scale(1.04);
+      background: #4a4039;
+      outline: none;
+    }
+
+    .audio-button svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentColor;
+    }
+
+    .audio-meta {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .audio-title {
+      display: block;
+      overflow: hidden;
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.25;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .audio-status {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.25;
+    }
+
+    .volume {
+      width: 74px;
+      accent-color: var(--rose);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 760ms ease, transform 760ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .manifesto__grid,
+      .closing .inner {
+        grid-template-columns: 1fr;
+      }
+
+      .note {
+        position: static;
+        max-width: 520px;
+      }
+
+      .moments__intro {
+        display: block;
+      }
+
+      .moments__intro p {
+        margin-top: 1rem;
+      }
+
+      .moment {
+        grid-column: span 6;
+      }
+
+      .moment:nth-child(2),
+      .moment:nth-child(3),
+      .moment:nth-child(5) {
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      h1 {
+        font-size: clamp(3.7rem, 17vw, 6rem);
+      }
+
+      .manifesto__text {
+        font-size: 1.42rem;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .moment {
+        grid-column: auto;
+      }
+
+      .audio-dock {
+        right: 0.75rem;
+        bottom: 0.75rem;
+        width: calc(100vw - 1.5rem);
+      }
+
+      .volume {
+        width: 58px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="eyebrow reveal">Uma homenagem em voz baixa</p>
+        <h1 id="hero-title" class="reveal">Para quem transforma presença em casa.</h1>
+        <p class="hero__copy reveal" id="rotatingText">Há pessoas que não passam pela vida: elas ficam, iluminando os dias com uma delicadeza que o tempo aprende a guardar.</p>
+        <a class="scroll-link reveal" href="#prosa" aria-label="Rolar para a seção A Prosa">
+          Continuar
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="prosa" class="section manifesto" aria-labelledby="manifesto-title">
+      <div class="inner manifesto__grid">
+        <aside class="note reveal">
+          <p>Uma carta sem pressa, escrita para lembrar aquilo que nem sempre cabe em datas, retratos ou palavras rápidas.</p>
+        </aside>
+        <div>
+          <p class="eyebrow reveal">A Prosa</p>
+          <h2 id="manifesto-title" class="reveal">O amor também mora nos detalhes.</h2>
+          <div class="manifesto__text reveal">
+            <p>Existem gestos que parecem pequenos apenas para quem olha depressa. O cuidado em lembrar, a força silenciosa, a maneira de acolher sem exigir explicação: tudo isso constrói uma beleza rara, dessas que amadurecem com o tempo.</p>
+            <p>Esta página nasce como um lugar de pausa. Um espaço para reconhecer a presença que ensina, sustenta, inspira e permanece. Entre memórias e afetos, fica aqui um registro simples do quanto a sua história toca outras histórias.</p>
+            <p>Que cada linha seja uma forma discreta de dizer obrigada. Que cada imagem, mesmo antes de ser foto, guarde a promessa de um momento vivido com ternura.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section moments" aria-labelledby="moments-title">
+      <div class="inner">
+        <div class="moments__intro">
+          <div>
+            <p class="eyebrow reveal">Mural de Momentos</p>
+            <h2 id="moments-title" class="reveal">Memórias com luz própria.</h2>
+          </div>
+          <p class="reveal">Substitua estes quadros por fotografias queridas. O desenho foi pensado para valorizar imagens íntimas sem perder a sobriedade.</p>
+        </div>
+
+        <div class="gallery">
+          <figure class="moment reveal">
+            <div class="photo" style="--tone:#ded2c2; --focus:center;">
+              <img src="assets/momento-01.jpeg" alt="Momento de carinho em família" loading="lazy" />
+            </div>
+            <figcaption>O começo de uma lembrança que ainda sorri.</figcaption>
+          </figure>
+          <figure class="moment reveal">
+            <div class="photo" style="--tone:#d8c3bd; --focus:center;">
+              <img src="assets/momento-02.jpeg" alt="Mãe e filha sorrindo juntas" loading="lazy" />
+            </div>
+            <figcaption>A delicadeza de estar perto.</figcaption>
+          </figure>
+          <figure class="moment reveal">
+            <div class="photo" style="--tone:#c9cdbb; --focus:center top;">
+              <img src="assets/momento-03.jpeg" alt="Mãe e filho em um dia especial" loading="lazy" />
+            </div>
+            <figcaption>Um instante guardado com calma.</figcaption>
+          </figure>
+          <figure class="moment reveal">
+            <div class="photo" style="--tone:#ccb49f; --focus:center;">
+              <img src="assets/momento-04.jpeg" alt="Família reunida em homenagem à mamãe" loading="lazy" />
+            </div>
+            <figcaption>Afeto que atravessa o cotidiano.</figcaption>
+          </figure>
+          <figure class="moment reveal">
+            <div class="photo" style="--tone:#e2d8cc; --focus:center;">
+              <img src="assets/momento-05.jpeg" alt="Mãe e filho celebrando juntos" loading="lazy" />
+            </div>
+            <figcaption>A beleza serena dos dias bons.</figcaption>
+          </figure>
+          <figure class="moment reveal">
+            <div class="photo" style="--tone:#cbb5b0; --focus:center;">
+              <img src="assets/momento-06.jpeg" alt="Casal sorrindo em uma celebração" loading="lazy" />
+            </div>
+            <figcaption>Presença que faz tudo parecer mais leve.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing" aria-labelledby="closing-title">
+      <div class="inner">
+        <p class="eyebrow reveal">Com carinho</p>
+        <div>
+          <h2 id="closing-title" class="reveal">Algumas pessoas são abrigo antes mesmo de dizerem uma palavra.</h2>
+          <p class="reveal">E talvez a homenagem mais bonita seja esta: deixar registrado, com elegância e verdade, que a sua existência fez diferença.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="audio-dock" aria-label="Trilha sonora oculta">
+    <button class="audio-button" type="button" id="audioToggle" aria-label="Reproduzir trilha sonora">
+      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 5.14v13.72c0 .76.82 1.24 1.49.87l12.15-6.86a1 1 0 0 0 0-1.74L9.49 4.27A1 1 0 0 0 8 5.14Z"></path>
+      </svg>
+    </button>
+    <div class="audio-meta">
+      <span class="audio-title">Me and Your Mama</span>
+      <span class="audio-status" id="audioStatus">Toque para ativar</span>
+    </div>
+    <input class="volume" id="volumeControl" type="range" min="0" max="1" step="0.01" value="0.35" aria-label="Volume da trilha sonora" />
+    <audio id="backgroundAudio" preload="none" loop>
+      <source src="me-and-your-mama.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <script>
+    const revealElements = document.querySelectorAll(".reveal");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const rotatingText = document.getElementById("rotatingText");
+    const phrases = [
+      "Há pessoas que não passam pela vida: elas ficam, iluminando os dias com uma delicadeza que o tempo aprende a guardar.",
+      "O amor aparece nos gestos pequenos, nos cuidados repetidos e na presença que torna tudo mais seguro.",
+      "Toda memória bonita tem um pouco da sua voz, do seu sorriso e dessa força mansa que aproxima a família.",
+      "Esta homenagem guarda o que as palavras tentam alcançar: admiração, gratidão e um carinho que permanece."
+    ];
+
+    if (prefersReducedMotion) {
+      revealElements.forEach((element) => element.classList.add("is-visible"));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: "0px 0px -12% 0px",
+        threshold: 0.16
+      });
+
+      revealElements.forEach((element, index) => {
+        element.style.transitionDelay = `${Math.min(index * 45, 220)}ms`;
+        observer.observe(element);
+      });
+    }
+
+    if (!prefersReducedMotion && rotatingText) {
+      let phraseIndex = 0;
+
+      window.setInterval(() => {
+        rotatingText.classList.add("is-changing");
+
+        window.setTimeout(() => {
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          rotatingText.textContent = phrases[phraseIndex];
+          rotatingText.classList.remove("is-changing");
+        }, 520);
+      }, 5200);
+    }
+
+    const audio = document.getElementById("backgroundAudio");
+    const toggle = document.getElementById("audioToggle");
+    const status = document.getElementById("audioStatus");
+    const volume = document.getElementById("volumeControl");
+
+    const playIcon = '<svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.14v13.72c0 .76.82 1.24 1.49.87l12.15-6.86a1 1 0 0 0 0-1.74L9.49 4.27A1 1 0 0 0 8 5.14Z"></path></svg>';
+    const pauseIcon = '<svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5.5A1.5 1.5 0 0 1 8.5 4h1A1.5 1.5 0 0 1 11 5.5v13A1.5 1.5 0 0 1 9.5 20h-1A1.5 1.5 0 0 1 7 18.5v-13Zm6 0A1.5 1.5 0 0 1 14.5 4h1A1.5 1.5 0 0 1 17 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-13Z"></path></svg>';
+
+    audio.volume = Number(volume.value);
+
+    function setAudioState(isPlaying) {
+      toggle.innerHTML = isPlaying ? pauseIcon : playIcon;
+      toggle.setAttribute("aria-label", isPlaying ? "Pausar trilha sonora" : "Reproduzir trilha sonora");
+      status.textContent = isPlaying ? "Tocando suavemente" : "Toque para ativar";
+    }
+
+    toggle.addEventListener("click", async () => {
+      if (audio.paused) {
+        try {
+          await audio.play();
+          setAudioState(true);
+        } catch (error) {
+          status.textContent = "Não foi possível carregar a música";
+        }
+      } else {
+        audio.pause();
+        setAudioState(false);
+      }
+    });
+
+    volume.addEventListener("input", () => {
+      audio.volume = Number(volume.value);
+    });
+
+    audio.addEventListener("ended", () => setAudioState(false));
+  </script>
+</body>
+</html>
